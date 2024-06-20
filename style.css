@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body, html {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background: #151515;
+}
+/* use only the available space inside the 400x400 frame */
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+	box-shadow: 0px 0px 8px 0 #A91D3A;
+	overflow: hidden;
+  background: #151515;
+  color: #EEEEEE;
+	font-family: 'Poppins', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.card {
+	position: absolute;
+	top: 60px;
+	left: 50px;
+	height: 280px;
+	width: 300px;
+	background: #fff;
+	color: #333;
+	border-radius: 10px;
+	box-shadow: 0px 0px 15px 0 #A91D3A;
+	overflow: hidden;
+}
+
+.header {
+	position: relative;
+	height: 90px;
+	width: 100%;
+	background-color: #C73659;
+	color: #fff;
+}
+
+.header .main {
+	position: absolute;
+	font-family: "Josefin Slab", sans-serif;
+	font-size: 1.6rem;
+}
+.header .other {
+	position: absolute;
+	font-size: 1rem;
+}
+
+.header .title {
+	top: 12px;
+	left: 40px;
+	text-transform: uppercase;
+	font-style: italic;
+	font-weight: 700;
+}
+
+.header .date {
+	top: 46px;
+	left: 15px;
+	text-decoration: underline;
+	text-underline-offset: 5px;
+}
+
+.header .total {
+	top: 40px;
+	right: 26px;
+	font-size: .8rem;
+	font-weight: 500;
+}
+
+.header .amount {
+	position: absolute;
+	top: 55px;
+	right: 15px;
+	font-size: 1.2rem;
+}
+
+.header .amount .dollarsign {
+	font-size: 1rem;
+}
+
+.parameter {
+	text-align: right;
+	padding: 10px 0 15px 0;
+}
+
+.parameter span {
+	position: relative;
+	font-size: .8rem;
+	color: #151515;
+	line-height: 1rem;
+	padding: 0 20px 0 22px;
+	font-weight: 600;
+}
+
+.parameter span:before {
+	content: '';
+	position: absolute;
+	left: 3px;
+	top: 6px;
+	display: block;
+	width: 15px;
+	height: 5px;
+	border-radius: 4px;
+}
+
+.parameter .views:before {
+	background: #B8405E;
+}
+
+.parameter .purchase:before {
+	background: #2EB086;
+}
+
+.statistic {
+	position: relative;
+	height: 100px;
+	width: 280px;
+	margin: 0 auto;
+}
+
+.statistic .bar-1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: rgba(199,54,89, 0.4);
+}
+
+.statistic .bar-2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: rgba(199,54,89, 0.4);
+	top: 49px;
+}
+
+.statistic .bar-3 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: rgba(199,54,89, 0.4);
+	top: inherit;
+	bottom: 0;
+}
+
+.statistic .data svg {
+	position: absolute;
+	top: 0;
+	left: 10px;
+	right: 0;
+	bottom: 0;
+	stroke-dasharray: 1000;
+	stroke-dashoffset: 1000;
+	animation: 4s dash .5s linear forwards;
+}
+
+@keyframes dash {
+	from {
+		stroke-dashoffset: 1000;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+.statistic .data svg polyline {
+	fill: none;
+	stroke-width: 2;
+	stroke-linecap: round;
+}
+
+.statistic .views polyline {
+	stroke: #B8405E;
+}
+
+.statistic .purchase polyline {
+	stroke: #2EB086;
+}
+
+.tooltip {
+	position: absolute;
+	bottom: 13px;
+	left: 50%;
+	transform: translate3d(-50%, 10px, 0);
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 12px;
+	color: #fff;
+	padding: 8px 6px;
+	border-radius: 5px;
+	visibility: hidden;
+	opacity: 0;
+	transition: transform 0.4s ease-out 0s, opacity 0.4s ease-out 0s;
+}
+
+.tooltip:after {
+	content: '';
+	position: absolute;
+	display: block;
+	height: 8px;
+	width: 8px;
+	left: 50%;
+	margin-left: -3px;
+	bottom: -3px;
+	transform: rotate(45deg);
+	background: inherit;
+}
+
+[class^="point-"] {
+  position: absolute;
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.views [class^="point-"], .tooltip, .tooltip:after {
+	background: #B8405E;
+}
+
+[class^="point-"]:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+	transform: translate3d(-50%, 0, 0);
+}
+
+.views .point-1 {
+	left: 12px;
+	top: 45px;
+}
+.views .point-2 {
+	left: 55px;
+	top: 8px;
+}
+
+.views .point-3 {
+	left: 95px;
+	top: 19px;
+}
+
+.views .point-4 {
+	left: 135px;
+	top: 8px;
+}
+
+.views .point-5 {
+	left: 176px;
+	top: 33px;
+}
+
+.views .point-6 {
+	left: 217px;
+	top: 42px;
+}
+
+.views .point-7 {
+	left: 254px;
+	top: 17px;
+}
+
+.purchase [class^="point-"], .tooltip, .tooltip:after {
+	background: #2EB086;
+}
+
+.purchase .point-1 {
+	left: 12px;
+	top: 58px;
+}
+.purchase .point-2 {
+	left: 55px;
+	top: 46px;
+}
+
+.purchase .point-3 {
+	left: 95px;
+	top: 60px;
+}
+
+.purchase .point-4 {
+	left: 135px;
+	top: 52px;
+}
+
+.purchase .point-5 {
+	left: 178px;
+	top: 58px;
+}
+
+.purchase .point-6 {
+	left: 217px;
+	top: 69px;
+}
+
+.purchase .point-7 {
+	left: 254px;
+	top: 60px;
+}
+
+.days {
+	width: 280px;
+	margin: 0 auto;
+}
+
+.days .day {
+	display: block;
+	float: left;
+	width: calc(100%/7);
+	font-size: 10px;
+	color: #333;
+	font-weight: 700;
+	line-height: 30px;
+	text-transform: uppercase;
+	text-align: center;
+}
